@@ -1,0 +1,12 @@
+name: ClearLite
+version: 1.0
+main: me.luna.clearlite.Clearlite
+api-version: '1.21'
+commands:
+  clearlite:
+    description: Manually clears expendable entities
+    usage: /clearlite
+permissions:
+  clearlite.use:
+    description: Allows using /clearlite
+    default: op

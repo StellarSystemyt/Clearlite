@@ -1,0 +1,11 @@
+tps-check-interval-ticks: 200
+tps-threshold: 18.0
+whitelist:
+  - PLAYER
+  - BOAT
+  - MINECART
+  - ARMOR_STAND
+  - ITEM_FRAME
+  - EXPERIENCE_ORB
+region-safe: true
+towny-safe: true
