@@ -1,22 +1,12 @@
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
 clear-types:
-  - DROPPED_ITEM
-  - ARROW
-  - SPECTRAL_ARROW
-  - TRIDENT
-  - EXPERIENCE_ORB
-  - FIREWORK
-  - AREA_EFFECT_CLOUD
-  - THROWN_EXP_BOTTLE
-  - SNOWBALL
-  - ENDER_PEARL
-  - EGG
-  - LLAMA_SPIT
-  - FALLING_BLOCK
-  - SMALL_FIREBALL
-  - FIREBALL
-  - DRAGON_FIREBALL
+    - DROPPED_ITEM
+    - EXPERIENCE_ORB
+    - FIREWORK
+    - AREA_EFFECT_CLOUD
+    - FALLING_BLOCK
+
 skip:
   named: true
   tamed: true
