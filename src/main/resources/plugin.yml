@@ -2,11 +2,21 @@ name: ClearLite
 version: 1.0
 main: me.luna.clearlite.Clearlite
 api-version: '1.21'
+Authors: [TheModpackCurator]
+description: Lightweight, safe entity clearing.
 commands:
   clearlite:
     description: Manually clears expendable entities
-    usage: /clearlite
+    usage: /clearlite [simulate|now|reload]
+    aliases: [cl]
+
 permissions:
-  clearlite.use:
-    description: Allows using /clearlite
+  clearlite.simulate:
+    description: Run a dry run to see how many would be cleared
+    default: op
+  clearlite.now:
+    description: Clear entities immediately
+    default: op
+  clearlite.reload:
+    description: Reload Clearlite config
     default: op

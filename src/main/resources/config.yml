@@ -1,11 +1,30 @@
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
-whitelist:
-  - PLAYER
-  - BOAT
-  - MINECART
-  - ARMOR_STAND
-  - ITEM_FRAME
+clear-types:
+  - DROPPED_ITEM
+  - ARROW
+  - SPECTRAL_ARROW
+  - TRIDENT
   - EXPERIENCE_ORB
+  - FIREWORK
+  - AREA_EFFECT_CLOUD
+  - THROWN_EXP_BOTTLE
+  - SNOWBALL
+  - ENDER_PEARL
+  - EGG
+  - LLAMA_SPIT
+  - FALLING_BLOCK
+  - SMALL_FIREBALL
+  - FIREBALL
+  - DRAGON_FIREBALL
+skip:
+  named: true
+  tamed: true
+  villagers: true
+  armor-stands: true
+  item-frames: true
+  paintings: true
+  vehicles: true
+  citizens-npc: true
 region-safe: true
 towny-safe: true

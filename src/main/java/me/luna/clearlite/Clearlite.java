@@ -8,9 +8,8 @@ public class Clearlite extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        getCommand("Clearlite").setExecutor(new ClearCommand(this));
         getLogger().info("ClearLite enabled!");
-
-        getCommand("clearlite").setExecutor(new ClearCommand(this));
 
         long interval = getConfig().getLong("tps-check-interval-ticks", 200);
         double tpsThreshold = getConfig().getDouble("tps-threshold", 18.0);
