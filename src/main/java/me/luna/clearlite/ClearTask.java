@@ -44,7 +44,8 @@ public class ClearTask implements Runnable {
 
     /** New: supports simulation mode; returns how many entities matched */
     public int execute(boolean simulate) {
-        int affected = 0;
+        return execute(simulate, null, null, -1.0);
+    }
 
         final boolean regionSafe = plugin.getConfig().getBoolean("region-safe", false);
         final boolean townySafe  = plugin.getConfig().getBoolean("towny-safe",  false);
