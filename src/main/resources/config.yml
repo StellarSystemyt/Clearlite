@@ -3,6 +3,9 @@ config-version: 3
 
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
+broadcast: true
+
+# Entities Clearlite is allowed to remove (modern path).
 clear-types:
   - DROPPED_ITEM
   - EXPERIENCE_ORB
