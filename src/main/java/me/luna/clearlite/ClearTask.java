@@ -12,6 +12,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
 
+/**
+ * Clearlite - ClearTask (Snapshot 3 + per-member)
+ *
+ * Adds:
+ * - Per-member skip rules for items/projectiles (+ per-member grace override)
+ * - Per-world enable + item grace
+ * - Material deny/allow
+ * - Projectile skipping (coarse + per-type)
+ * - Valuable-only region/town safety
+ * - Simulate breakdown & scoped execution
+ */
 public class ClearTask implements Runnable {
 
     private final JavaPlugin plugin;
