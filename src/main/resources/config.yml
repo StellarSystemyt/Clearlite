@@ -4,11 +4,19 @@ config-version: 3
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
 clear-types:
-    - DROPPED_ITEM
-    - EXPERIENCE_ORB
-    - FIREWORK
-    - AREA_EFFECT_CLOUD
-    - FALLING_BLOCK
+  - DROPPED_ITEM
+  - EXPERIENCE_ORB
+  - FIREWORK
+  - AREA_EFFECT_CLOUD
+  - FALLING_BLOCK
+
+# Global grace for freshly dropped items (overridden per world or per member).
+item_grace_ticks: 200
+
+# Optional: protect certain materials or only allow a specific set.
+materials:
+  denylist: []        # e.g., [NETHER_STAR, DRAGON_EGG]
+  allowlist: []       # empty => allow all (minus denylist)
 
 skip:
   named: true
