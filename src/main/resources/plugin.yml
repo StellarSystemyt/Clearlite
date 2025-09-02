@@ -4,6 +4,7 @@ main: me.luna.clearlite.Clearlite
 api-version: '1.21'
 Authors: [TheModpackCurator]
 description: Lightweight, safe entity clearing.
+
 commands:
   clearlite:
     description: Manually clears expendable entities
