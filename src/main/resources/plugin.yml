@@ -8,7 +8,7 @@ description: Lightweight, safe entity clearing.
 commands:
   clearlite:
     description: Manually clears expendable entities
-    usage: /clearlite [simulate|now|reload]
+    usage: /clearlite [simulate|now|reload|status|member]
     aliases: [cl]
 
 permissions:
