@@ -1,3 +1,6 @@
+#Please do not change the config version it could break the plugin.
+config-version: 3
+
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
 clear-types:
