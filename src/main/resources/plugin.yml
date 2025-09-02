@@ -21,5 +21,8 @@ permissions:
     description: Reload Clearlite config
     default: op
   clearlite.status:
-    desription: Tells you the statis of the plugin
+    description: Show Clearlite status (TPS, last run, entities removed)
+    default: op
+  clearlite.member:
+    description: Manage per-member rules (skip items/projectiles, grace overrides)
     default: op
