@@ -2,7 +2,7 @@ name: ClearLite
 version: 1.0
 main: me.luna.clearlite.Clearlite
 api-version: '1.21'
-Authors: [TheModpackCurator]
+authors: [TheModpackCurator]
 description: Lightweight, safe entity clearing.
 
 commands:
