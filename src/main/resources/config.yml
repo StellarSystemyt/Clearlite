@@ -26,3 +26,17 @@ skip:
   #these are off by default. If you use towny or WorldGuard we recommend turning them on.
 region-safe: false
 towny-safe: false
+
+#Item grace ticks can be changed to suite your
+#preferences of how long you want your items to last
+
+worlds:
+  world:
+    enabled: true
+    item_grace_ticks: 200
+  world_nether:
+    enabled: true
+    item_grace_ticks: 100
+  world_the_end:
+    enabled: true
+    item_grace_ticks: 50
