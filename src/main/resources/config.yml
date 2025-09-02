@@ -41,18 +41,19 @@ worlds:
     enabled: true
     item_grace_ticks: 50
 
-    #Do your member setup exactly as is below. or use the new commands yk...
-
-    # NEW: per-member rules (use UUIDs if possible; names work for online players)
-    #members:
-     # "9c2f9c2a-1234-5678-9abc-0123456789ab":
-      #  skip:
-       #   items: true
-        #  projectiles: false
-       # item_grace_ticks: 400   # overrides global/world grace for this player’s dropped items
-     # "Luna": # fallback by exact name (resolved if online)
-      #  skip:
-       #   items: false
-        #  projectiles: true
-
-
+# Per-member rules (use UUIDs if possible; names work for online players).
+# You can manage these in-game with:
+#   /cl member <player|uuid> show
+#   /cl member <player|uuid> skip items <true|false>
+#   /cl member <player|uuid> skip projectiles <true|false>
+#   /cl member <player|uuid> grace <ticks|off>
+# members:
+#   "9c2f9c2a-1234-5678-9abc-0123456789ab":
+#     skip:
+#       items: true
+#       projectiles: false
+#     item_grace_ticks: 400
+#   "Luna":
+#     skip:
+#       items: false
+#       projectiles: true
