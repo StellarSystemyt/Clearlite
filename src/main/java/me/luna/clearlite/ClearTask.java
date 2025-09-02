@@ -39,8 +39,7 @@ public class ClearTask implements Runnable {
 
     @Override
     public void run() {
-        // scheduled runs do a real clear
-        execute(false);
+        execute(false, null, null, -1.0);
     }
 
     /** New: supports simulation mode; returns how many entities matched */
