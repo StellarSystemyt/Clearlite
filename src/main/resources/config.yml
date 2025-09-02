@@ -7,7 +7,7 @@ broadcast: true
 
 # Entities Clearlite is allowed to remove (modern path).
 clear-types:
-  - DROPPED_ITEM
+  - ITEM
   - EXPERIENCE_ORB
   - FIREWORK
   - AREA_EFFECT_CLOUD
