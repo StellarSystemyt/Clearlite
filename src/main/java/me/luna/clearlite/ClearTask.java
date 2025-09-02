@@ -134,4 +134,149 @@ if (skipVehicles && e instanceof Boat) return true;
             return false;
         }
     }
+
+    private boolean sameWorld(World a, World b) {
+        return a != null && b != null && Objects.equals(a.getUID(), b.getUID());
+    }
+
+    // ---------- per-member support ----------
+
+    private boolean isProtectedByMemberRules(Entity e, PerMemberRules rules) {
+        // DROPPED_ITEM: consult tagged owner (metadata) or Paper owner
+        if (e instanceof Item it) {
+            Optional<UUID> owner = getEntityOwnerUUID(it);
+            if (owner.isPresent()) {
+                PerMemberRules.Member m = rules.get(owner.get());
+                if (m != null && m.skipItems) return true;
+            }
+            return false;
+        }
+
+        // Projectiles: shooter may be a player
+        if (e instanceof Projectile proj) {
+            UUID shooter = getProjectilePlayerUUID(proj).orElse(null);
+            if (shooter != null) {
+                PerMemberRules.Member m = rules.get(shooter);
+                if (m != null && m.skipProjectiles) return true;
+            }
+            return false;
+        }
+
+        return false;
+    }
+
+    private Optional<UUID> getEntityOwnerUUID(Item it) {
+        // Prefer our metadata tag (set by listener)
+        if (it.hasMetadata(META_OWNER)) {
+            try {
+                String raw = it.getMetadata(META_OWNER).get(0).asString();
+                return Optional.of(UUID.fromString(raw));
+            } catch (Exception ignored) {}
+        }
+        // Fallback: Spigot/Paper Item#getOwner (if used by server mechanics)
+        try {
+            UUID owner = it.getOwner(); // may be null
+            if (owner != null) return Optional.of(owner);
+        } catch (Throwable ignored) {}
+        return Optional.empty();
+    }
+
+    private Optional<UUID> getProjectilePlayerUUID(Projectile proj) {
+        try {
+            Object shooter = proj.getShooter();
+            if (shooter instanceof Player p) return Optional.of(p.getUniqueId());
+        } catch (Throwable ignored) {}
+        // Also allow metadata tag from listener (for odd shooters)
+        if (proj.hasMetadata(META_OWNER)) {
+            try {
+                String raw = proj.getMetadata(META_OWNER).get(0).asString();
+                return Optional.of(UUID.fromString(raw));
+            } catch (Exception ignored) {}
+        }
+        return Optional.empty();
+    }
+
+    // ---------- stats accessors ----------
+
+    public int getLastAffected() { return lastAffected; }
+    public long getLastRunTimestampMs() { return lastRunMs; }
+    public Map<EntityType, Integer> getLastBreakdownSnapshot() {
+        synchronized (lastBreakdown) {
+            return Collections.unmodifiableMap(new EnumMap<>(lastBreakdown));
+        }
+    }
+
+    // ---------- utility to tag (optional programmatic tag) ----------
+
+    public void tagOwner(Entity entity, UUID uuid) {
+        if (uuid == null || entity == null) return;
+        entity.setMetadata(META_OWNER, new FixedMetadataValue(plugin, uuid.toString()));
+    }
+
+    // ---------- per-member rules loader ----------
+
+    static class PerMemberRules {
+        static class Member {
+            final boolean skipItems;
+            final boolean skipProjectiles;
+            final Integer graceOverrideTicks; // nullable
+
+            Member(boolean skipItems, boolean skipProjectiles, Integer graceOverrideTicks) {
+                this.skipItems = skipItems;
+                this.skipProjectiles = skipProjectiles;
+                this.graceOverrideTicks = graceOverrideTicks;
+            }
+        }
+
+        private final Map<UUID, Member> byUuid = new HashMap<>();
+
+        PerMemberRules(JavaPlugin plugin) {
+            ConfigurationSection root = plugin.getConfig().getConfigurationSection("members");
+            if (root == null) return;
+
+            for (String key : root.getKeys(false)) {
+                ConfigurationSection msec = root.getConfigurationSection(key);
+                if (msec == null) continue;
+
+                UUID uuid = parseUuidOrLookup(key);
+                if (uuid == null) continue;
+
+                boolean skipItems = msec.getBoolean("skip.items", false);
+                boolean skipProj  = msec.getBoolean("skip.projectiles", false);
+                Integer grace     = msec.contains("item_grace_ticks") ? msec.getInt("item_grace_ticks") : null;
+
+                byUuid.put(uuid, new Member(skipItems, skipProj, grace));
+            }
+        }
+
+        Member get(UUID uuid) {
+            return byUuid.get(uuid);
+        }
+
+        Optional<Integer> getMemberGraceFor(Item it) {
+            Optional<UUID> o = Optional.empty();
+            try {
+                if (it.hasMetadata(ClearTask.META_OWNER)) {
+                    String raw = it.getMetadata(ClearTask.META_OWNER).get(0).asString();
+                    o = Optional.of(UUID.fromString(raw));
+                } else {
+                    UUID owner = it.getOwner();
+                    if (owner != null) o = Optional.of(owner);
+                }
+            } catch (Throwable ignored) {}
+            if (o.isEmpty()) return Optional.empty();
+            Member m = get(o.get());
+            return (m != null && m.graceOverrideTicks != null) ? Optional.of(m.graceOverrideTicks) : Optional.empty();
+        }
+
+        private UUID parseUuidOrLookup(String key) {
+            try {
+                return UUID.fromString(key);
+            } catch (IllegalArgumentException ignored) {
+                // Try to resolve current online player name -> UUID
+                Player p = Bukkit.getPlayerExact(key);
+                return (p != null) ? p.getUniqueId() : null;
+            }
+        }
+    }
 }
