@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class ClearTask implements Runnable {
 
+    public static final String META_OWNER = "clearlite_owner"; // UUID string
     private final JavaPlugin plugin;
 
     public ClearTask(JavaPlugin plugin) {
