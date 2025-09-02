@@ -8,6 +8,13 @@ public class Clearlite extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        // tasks
+        ClearTask task = new ClearTask(this);
+        // schedule as you already do…
+
+        // listeners
+        getServer().getPluginManager().registerEvents(new SpawnTagListener(this), this);
+    
         getCommand("Clearlite").setExecutor(new ClearCommand(this));
         getLogger().info("ClearLite enabled!");
 
