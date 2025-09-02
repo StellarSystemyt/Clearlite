@@ -28,6 +28,11 @@ public class ClearTask implements Runnable {
     public static final String META_OWNER = "clearlite_owner"; // UUID string
     private final JavaPlugin plugin;
 
+    // Last simulate/run stats
+    private int lastAffected = 0;
+    private long lastRunMs = 0L;
+    private final EnumMap<EntityType, Integer> lastBreakdown = new EnumMap<>(EntityType.class);
+
     public ClearTask(JavaPlugin plugin) {
         this.plugin = plugin;
     }
