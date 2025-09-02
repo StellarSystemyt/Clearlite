@@ -20,3 +20,6 @@ permissions:
   clearlite.reload:
     description: Reload Clearlite config
     default: op
+  clearlite.status:
+    desription: Tells you the statis of the plugin
+    default: op
