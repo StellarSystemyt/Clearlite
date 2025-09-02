@@ -41,7 +41,7 @@ worlds:
     enabled: true
     item_grace_ticks: 50
 
-    #Do your member setup exactly as is below.
+    #Do your member setup exactly as is below. or use the new commands yk...
 
     # NEW: per-member rules (use UUIDs if possible; names work for online players)
     #members:
