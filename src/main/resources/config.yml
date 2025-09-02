@@ -19,5 +19,10 @@ skip:
   paintings: true
   vehicles: true
   citizens-npc: true
-region-safe: true
-towny-safe: true
+  projectiles: true
+  projectile_overrides:
+    THROWN_EXP_BOTTLE: true
+    TRIDENT: false
+  #these are off by default. If you use towny or WorldGuard we recommend turning them on.
+region-safe: false
+towny-safe: false
