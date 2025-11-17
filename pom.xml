@@ -6,17 +6,15 @@
 
     <groupId>me.luna</groupId>
     <artifactId>Clearlite</artifactId>
-    <version>1.0-SNAPSHOT-2</version>
+    <version>1.1-Release-patch</version>
     <packaging>jar</packaging>
     <name>Clearlite</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Use Java 21 -->
         <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
-    <!-- Repos: Paper for paper-api, EngineHub for WorldGuard -->
     <repositories>
         <repository>
             <id>papermc</id>
@@ -29,24 +27,31 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API (for getTPS and other Paper features) -->
+        <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.8-R0.1-SNAPSHOT</version>
+            <version>1.21.10-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+            <exclusions>
+                <!-- We don't need commons-lang3 ourselves; this helps quiet SCA tools -->
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
-        <!-- Towny (installed locally with mvn install:install-file) -->
+        <!-- Towny from local libs (system scope is fine if that's how you manage it) -->
         <dependency>
             <groupId>com.palmergames</groupId>
             <artifactId>Towny</artifactId>
-            <version>0.101.2.3</version>
+            <version>0.102.0.0</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Towny-0.101.2.3.jar</systemPath>
+            <systemPath>${project.basedir}/libs/Towny-0.102.0.0.jar</systemPath>
         </dependency>
 
-        <!-- WorldGuard (from EngineHub) -->
+        <!-- WorldGuard (local jar) -->
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
@@ -54,7 +59,8 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.14-dist.jar</systemPath>
         </dependency>
-        <!-- If you’re using libs/ local jars -->
+
+        <!-- WorldEdit (local jar) -->
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
@@ -63,6 +69,15 @@
             <systemPath>${project.basedir}/libs/worldedit-bukkit-7.3.16.jar</systemPath>
         </dependency>
 
+        <!-- Optional: patched commons-lang3 just for tests, if you want -->
+        <!--
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.20.0</version>
+            <scope>test</scope>
+        </dependency>
+        -->
     </dependencies>
 
     <build>
@@ -73,8 +88,8 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
         <plugins>
-            <!-- Java 21 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -84,7 +99,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade only if you actually relocate/embed libs (you probably don't need it) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -92,10 +106,12 @@
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals><goal>shade</goal></goals>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
                         <configuration>
                             <minimizeJar>false</minimizeJar>
-                            <!-- No relocations because all deps are 'provided' -->
+                            <!-- No relocations since everything here is provided/system -->
                         </configuration>
                     </execution>
                 </executions>

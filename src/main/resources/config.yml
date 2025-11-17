@@ -1,5 +1,5 @@
 #Please do not change the config version it could break the plugin.
-config-version: 3
+config-version: "5.1"
 
 tps-check-interval-ticks: 200
 tps-threshold: 18.0
@@ -18,8 +18,8 @@ item_grace_ticks: 200
 
 # Optional: protect certain materials or only allow a specific set.
 materials:
-  denylist: []        # e.g., [NETHER_STAR, DRAGON_EGG]
-  allowlist: []       # empty => allow all (minus denylist)
+  denylist: []        # e.g., [NETHER_STAR, DRAGON_EGG] Call blacklist
+  allowlist: []       # empty => allow all (minus denylist) Call Whitelist
 
 skip:
   named: true
@@ -34,11 +34,12 @@ skip:
   projectile_overrides:
     THROWN_EXP_BOTTLE: true
     TRIDENT: false
+  slabbo: true
   #These are off by default. If you use towny or WorldGuard we recommend turning them on.
 region-safe: false
 towny-safe: false
-
-#Item grace ticks can be changed to suite your
+slabbo-safe: false
+#Item grace ticks can be changed to suit your
 #preferences of how long you want your items to last
 
 worlds:
