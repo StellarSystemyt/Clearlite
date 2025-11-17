@@ -1,0 +1,71 @@
+#Please do not change the config version it could break the plugin.
+config-version: "5.1"
+
+tps-check-interval-ticks: 200
+tps-threshold: 18.0
+broadcast: true
+
+# Entities Clearlite is allowed to remove (modern path).
+clear-types:
+  - ITEM
+  - EXPERIENCE_ORB
+  - FIREWORK
+  - AREA_EFFECT_CLOUD
+  - FALLING_BLOCK
+
+# Global grace for freshly dropped items (overridden per world or per member).
+item_grace_ticks: 200
+
+# Optional: protect certain materials or only allow a specific set.
+materials:
+  denylist: []        # e.g., [NETHER_STAR, DRAGON_EGG] Call blacklist
+  allowlist: []       # empty => allow all (minus denylist) Call Whitelist
+
+skip:
+  named: true
+  tamed: true
+  villagers: true
+  armor-stands: true
+  item-frames: true
+  paintings: true
+  vehicles: true
+  citizens-npc: true
+  projectiles: true
+  projectile_overrides:
+    THROWN_EXP_BOTTLE: true
+    TRIDENT: false
+  slabbo: true
+  #These are off by default. If you use towny or WorldGuard we recommend turning them on.
+region-safe: false
+towny-safe: false
+slabbo-safe: false
+#Item grace ticks can be changed to suit your
+#preferences of how long you want your items to last
+
+worlds:
+  world:
+    enabled: true
+    item_grace_ticks: 200
+  world_nether:
+    enabled: true
+    item_grace_ticks: 100
+  world_the_end:
+    enabled: true
+    item_grace_ticks: 50
+
+# Per-member rules (use UUIDs if possible; names work for online players).
+# You can manage these in-game with:
+#   /cl member <player|uuid> show
+#   /cl member <player|uuid> skip items <true|false>
+#   /cl member <player|uuid> skip projectiles <true|false>
+#   /cl member <player|uuid> grace <ticks|off>
+# members:
+#   "9c2f9c2a-1234-5678-9abc-0123456789ab":
+#     skip:
+#       items: true
+#       projectiles: false
+#     item_grace_ticks: 400
+#   "Luna":
+#     skip:
+#       items: false
+#       projectiles: true

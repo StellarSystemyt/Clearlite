@@ -1,0 +1,17 @@
+Index: dependency-reduced-pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/dependency-reduced-pom.xml b/dependency-reduced-pom.xml
+--- a/dependency-reduced-pom.xml
++++ b/dependency-reduced-pom.xml	(date 1756676698880)
+@@ -4,7 +4,7 @@
+   <groupId>me.luna</groupId>
+   <artifactId>Clearlite</artifactId>
+   <name>Clearlite</name>
+-  <version>1.0-SNAPSHOT</version>
++  <version>1.0-SNAPSHOT-2</version>
+   <build>
+     <defaultGoal>clean package</defaultGoal>
+     <resources>
