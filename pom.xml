@@ -55,18 +55,18 @@
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.14</version>
+            <version>7.0.15</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.14-dist.jar</systemPath>
+            <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.15-beta-01.jar</systemPath>
         </dependency>
 
         <!-- WorldEdit (local jar) -->
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.3.16</version>
+            <version>7.4.0-beta</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/worldedit-bukkit-7.3.16.jar</systemPath>
+            <systemPath>${project.basedir}/libs/worldedit-bukkit-7.4.0-beta-01.jar</systemPath>
         </dependency>
 
         <!-- Optional: patched commons-lang3 just for tests, if you want -->
