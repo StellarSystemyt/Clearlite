@@ -52,7 +52,7 @@
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
-      <version>1.21.10-R0.1-SNAPSHOT</version>
+      <version>1.21.11-pre3-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -71,16 +71,16 @@
     <dependency>
       <groupId>com.sk89q.worldguard</groupId>
       <artifactId>worldguard-bukkit</artifactId>
-      <version>7.0.14</version>
+      <version>7.0.15</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.14-dist.jar</systemPath>
+      <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.15-beta-01.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>com.sk89q.worldedit</groupId>
       <artifactId>worldedit-bukkit</artifactId>
-      <version>7.3.16</version>
+      <version>7.4.0-beta-3.1</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/libs/worldedit-bukkit-7.3.16.jar</systemPath>
+      <systemPath>${project.basedir}/libs/worldedit-bukkit-7.4.0-beta-3.1.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>

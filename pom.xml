@@ -6,7 +6,7 @@
 
     <groupId>me.luna</groupId>
     <artifactId>Clearlite</artifactId>
-    <version>1.1-Release-patch</version>
+    <version>1.2-Release</version>
     <packaging>jar</packaging>
     <name>Clearlite</name>
 
