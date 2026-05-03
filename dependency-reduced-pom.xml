@@ -4,7 +4,7 @@
   <groupId>me.luna</groupId>
   <artifactId>Clearlite</artifactId>
   <name>Clearlite</name>
-  <version>1.3-Release</version>
+  <version>1.3-Release-patch</version>
   <build>
     <defaultGoal>clean package</defaultGoal>
     <resources>
