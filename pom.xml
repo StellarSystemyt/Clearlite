@@ -6,7 +6,7 @@
 
     <groupId>me.luna</groupId>
     <artifactId>Clearlite</artifactId>
-    <version>1.2-Release</version>
+    <version>1.3-Release</version>
     <packaging>jar</packaging>
     <name>Clearlite</name>
 
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.21.11-pre3-R0.1-SNAPSHOT</version>
+            <version>[26.1.2.build,)</version>
             <scope>provided</scope>
             <exclusions>
                 <!-- We don't need commons-lang3 ourselves; this helps quiet SCA tools -->
@@ -46,27 +46,27 @@
         <dependency>
             <groupId>com.palmergames</groupId>
             <artifactId>Towny</artifactId>
-            <version>0.102.0.0</version>
+            <version>0.102.0.14</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/Towny-0.102.0.0.jar</systemPath>
+            <systemPath>${project.basedir}/libs/Towny-0.102.0.14.jar</systemPath>
         </dependency>
 
         <!-- WorldGuard (local jar) -->
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
-            <version>7.0.15</version>
+            <version>7.0.16</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.15-beta-01.jar</systemPath>
+            <systemPath>${project.basedir}/libs/worldguard-bukkit-7.0.16.jar</systemPath>
         </dependency>
 
         <!-- WorldEdit (local jar) -->
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
             <artifactId>worldedit-bukkit</artifactId>
-            <version>7.4.0-beta-3.1</version>
+            <version>7.4.3-beta-0.1</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/libs/worldedit-bukkit-7.4.0-beta-3.1.jar</systemPath>
+            <systemPath>${project.basedir}/libs/worldedit-bukkit-7.4.3-beta-0.1.jar</systemPath>
         </dependency>
 
         <!-- Optional: patched commons-lang3 just for tests, if you want -->
